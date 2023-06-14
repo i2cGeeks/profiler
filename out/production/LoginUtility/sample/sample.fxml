@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane fx:id="rootPane" alignment="center" prefHeight="400.0" prefWidth="400.0" style="-fx-font-family: 'Arial Rounded MT';" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+
+    <padding><Insets bottom="25.0" left="25.0" right="25.0" top="25.0" /></padding>
+
+    <Label prefHeight="43.0" prefWidth="365.0" style="-fx-alignment: center; -fx-font-size: xx-large " text="Welcome to i2c" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0">
+      <font>
+          <Font name="Brush Script MT Italic" size="22.0" />
+      </font>
+        <opaqueInsets>
+            <Insets />
+        </opaqueInsets>
+      <textFill>
+         <LinearGradient endX="1.0" endY="1.0">
+            <stops>
+               <Stop>
+                  <color>
+                     <Color red="0.8421052694320679" green="0.5760883688926697" blue="0.14814814925193787" />
+                  </color>
+               </Stop>
+               <Stop offset="1.0">
+                  <color>
+                     <Color red="0.9607843160629272" green="0.1411764770746231" blue="0.37254902720451355" />
+                  </color>
+               </Stop>
+            </stops>
+         </LinearGradient>
+      </textFill>
+      <GridPane.margin>
+         <Insets bottom="10.0" />
+      </GridPane.margin>
+    </Label>
+
+    <Label prefHeight="17.0" prefWidth="121.0" style="-fx-alignment: center" text="Database" textAlignment="JUSTIFY" GridPane.columnIndex="0" GridPane.rowIndex="2">
+      <font>
+         <Font name="Arial Narrow" size="13.0" />
+      </font></Label>
+    <ComboBox fx:id="db_id" onAction="#handleDbChangeAction" prefHeight="27.0" prefWidth="231.0" promptText="Select Environment " style="-fx-alignment: center" GridPane.columnIndex="1" GridPane.rowIndex="2">
+
+    </ComboBox>
+
+
+    <Label prefHeight="17.0" prefWidth="121.0" style="-fx-alignment: center" text="Application" textAlignment="JUSTIFY" GridPane.columnIndex="0" GridPane.rowIndex="3">
+      <font>
+         <Font name="Arial Narrow" size="13.0" />
+      </font></Label>
+    <ComboBox fx:id="app_id" prefHeight="27.0" prefWidth="231.0" promptText="Select App " style="-fx-alignment: center" GridPane.columnIndex="1" GridPane.rowIndex="3">
+
+
+    </ComboBox>
+
+    <Label prefHeight="17.0" prefWidth="120.0" style="-fx-alignment: center" text="User ID" textAlignment="JUSTIFY" GridPane.columnIndex="0" GridPane.rowIndex="4">
+      <font>
+         <Font name="Arial Narrow" size="13.0" />
+      </font></Label>
+    <ComboBox fx:id="user_id" prefHeight="27.0" prefWidth="231.0" promptText="Select User " style="-fx-alignment: center" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <GridPane.margin>
+         <Insets bottom="5.0" />
+      </GridPane.margin></ComboBox>
+
+    <Button fx:id="submit" contentDisplay="CENTER" onAction="#handleSubmitButtonAction" opacity="1" style="-fx-background-color: #b30753;" text="Set User" textAlignment="JUSTIFY" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="5">
+      <font>
+         <Font name="Apple LiGothic Medium" size="14.0" />
+      </font>
+      <opaqueInsets>
+         <Insets />
+      </opaqueInsets>
+      <effect>
+         <Glow />
+      </effect></Button>
+    <Button fx:id="post" contentDisplay="CENTER" onAction="#handleRequstButtonAction" opacity="1" prefHeight="20.0" style="-fx-background-color: #6FA1F8;" text="SignIn User" textAlignment="JUSTIFY" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+      <font>
+         <Font name="Apple LiGothic Medium" size="14.0" />
+      </font>
+      <opaqueInsets>
+         <Insets />
+      </opaqueInsets>
+      <effect>
+         <Glow />
+      </effect>
+     </Button>
+    <Button fx:id="logs" contentDisplay="CENTER" onAction="#handleLogsButtonAction" opacity="1" prefHeight="20.0" style="-fx-background-color: #489A71;" text="View Logs" textAlignment="JUSTIFY" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="5">>
+        <font>
+            <Font name="Apple LiGothic Medium" size="14.0" />
+        </font>
+        <opaqueInsets>
+            <Insets />
+        </opaqueInsets>
+      <GridPane.margin>
+         <Insets right="20.0" />
+      </GridPane.margin>
+      <effect>
+         <Glow />
+      </effect>
+    </Button>
+    <ProgressIndicator fx:id="progress_indicator" opacity="0" prefHeight="25.0" progress="0.47" style="-fx-alignment: center;" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+      <GridPane.margin>
+         <Insets />
+      </GridPane.margin>
+      <padding>
+         <Insets left="50.0" />
+      </padding></ProgressIndicator>
+
+     <ScrollPane fx:id="logsPane" blendMode="HARD_LIGHT" style="-fx-background-color: #000 " prefHeight="246.0" prefWidth="415.0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="6">
+     <content>
+     </content>
+      <GridPane.margin>
+         <Insets top="10.0" />
+      </GridPane.margin>
+      <cursor>
+         <Cursor fx:constant="DEFAULT" />
+      </cursor>
+   </ScrollPane>
+
+    <Label fx:id="failure_msg" contentDisplay="CENTER" opacity="0.0" prefHeight="12.0" prefWidth="352.0" style="-fx-alignment: center; -fx-font-size: small; -fx-font-family: 'Arial Rounded MT Bold';-fx-color: white " text="Unfortunately there seems some issues while setting user" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="7" GridPane.rowSpan="2">
+      <GridPane.margin>
+         <Insets top="20.0" />
+      </GridPane.margin></Label>
+    <Label fx:id="success_msg" contentDisplay="CENTER" opacity="0.0" prefHeight="12.0" prefWidth="356.0" style="-fx-alignment: center; -fx-font-size: small; -fx-font-family: 'Arial Rounded MT Bold';-fx-color: white  " text="Thanks for waiting, user has been set successfully" textAlignment="JUSTIFY" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="7" GridPane.rowSpan="2">
+      <GridPane.margin>
+         <Insets top="20.0" />
+      </GridPane.margin></Label>
+    <Label fx:id="validation_msg" contentDisplay="CENTER" opacity="0.0" prefHeight="12.0" prefWidth="356.0" style="-fx-alignment: center; -fx-font-size: small; -fx-font-family: 'Arial Rounded MT Bold';-fx-color: white  " text="Kindly first select all given Options" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="7" GridPane.rowSpan="2">
+      <GridPane.margin>
+         <Insets top="20.0" />
+      </GridPane.margin></Label>
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+
+
+</GridPane>
